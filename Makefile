@@ -1,5 +1,5 @@
 NAME		     =	so_long
-CC			=	gcc
+CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror #-fsanitize=address
 RM			=	rm -rf	
 SRC			=	so_long.c \
@@ -11,7 +11,7 @@ SRC			=	so_long.c \
 				utils/list_functions/ft_lstnew.c \
 				utils/textures/assign_textures.c utils/textures/assign_textures_pl_e_c.c utils/textures/assign_textures_env_ex.c \
 				utils/hooks/close_game.c utils/hooks/next_level.c utils/hooks/update.c utils/hooks/game_over.c utils/hooks/key.c \
-				utils/map_init/assign_level.c utils/map_init/check_maps.c utils/map_init/map_init.c \
+				utils/map_init/assign_level.c utils/map_init/check_maps.c utils/map_init/map_init.c utils/map_init/flood_fill.c\
 				utils/game/game_init.c utils/game/move_enemy.c utils/game/move_player.c utils/game/render.c utils/game/animation.c \
 				utils/end_game/free_all.c utils/end_game/ft_error.c \
 				utils/gnl/get_next_line.c utils/gnl/get_next_line_utils.c \

@@ -11,38 +11,6 @@
 /* ************************************************************************** */
 #include "../../so_long.h"
 
-static int	filling(int x, int y, char **tempmap, t_solong *game)
-{
-	if (x < 0 || y < 0 || x >= game->size.x || y >= game->size.y)
-		return (1);
-	if (tempmap[y][x] == 'F' || tempmap[y][x] == '1' || tempmap[y][x] == 'M')
-		return (1);
-	else if (tempmap[y][x] == 'C')
-		game->map_collectibles++;
-	else if (tempmap[y][x] == 'E')
-		game->exit++;
-	tempmap[y][x] = 'F';
-	filling(x - 1, y, tempmap, game);
-	filling(x + 1, y, tempmap, game);
-	filling(x, y - 1, tempmap, game);
-	filling(x, y + 1, tempmap, game);
-	if (game->map_collectibles != game->map_content.collectible \
-		|| game->exit != 1)
-		return (1);
-	return (0);
-}
-
-static int	flood_fill(t_solong *game, char **tempmap)
-{
-	if (filling(game->player.x, game->player.y, tempmap, game) == 1)
-	{
-		ft_freemap(tempmap);
-		return (1);
-	}
-	ft_freemap(tempmap);
-	return (0);
-}
-
 static int	check_case(char c, int x, int y, t_solong *game)
 {
 	if (c == 'P' && game->map_content.player == 0)
@@ -87,8 +55,8 @@ void	check_content(char **map, t_solong *game)
 	}
 	if (game->map_content.collectible == 0 || game->map_content.exit != 1 \
 		|| game->map_content.player != 1)
-		ft_error(game, "Either not collectibles, \
-			wrong amount of exit or wrong amount of players\n");
+		ft_error(game, "Either not collectibles,\
+		wrong amount of exit or wrong amount of players\n");
 	if (flood_fill(game, ft_mapdup(map, game)) == 1)
 		ft_error(game, "Map is not fully accessible\n");
 	return ;

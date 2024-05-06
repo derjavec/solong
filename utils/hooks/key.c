@@ -15,8 +15,6 @@ static int	check_path(t_solong *game, int x, int y)
 {
 	if (game->map[y][x] == '1')
 		return (1);
-	else if (game->map[y][x] == 'E' && game->exit == 0)
-		return (1);
 	return (0);
 }
 

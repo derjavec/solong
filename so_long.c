@@ -26,6 +26,7 @@ void	initialize(t_solong *game)
 	game->lists_created = 0;
 	game->map_collectibles = 0;
 	game->exit = 0;
+	game->e = 0;
 	game->map = NULL;
 }
 

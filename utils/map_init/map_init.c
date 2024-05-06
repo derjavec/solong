@@ -23,6 +23,8 @@ static void	map_format(char **map, t_solong *game)
 	while (map && map[i])
 	{
 		temp = ft_strtrim(map[i], "\n");
+		if (!temp || (int)ft_strlen(temp) != game->size.x)
+			ft_error(game, "Format error\n");
 		free(map[i]);
 		map[i] = temp;
 		if ((int)ft_strlen(map[i]) != game->size.x)

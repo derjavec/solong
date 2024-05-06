@@ -31,12 +31,17 @@ char	**ft_mapdup(char **map, t_solong *game)
 	height = mapheight(map);
 	result = malloc((height + 1) * sizeof(char *));
 	if (result == NULL)
-		ft_error(game, "Malloc error un map");
+		ft_error(game, "Malloc error in map");
 	while (map && map[i])
 	{
 		result[i] = ft_strdup(map[i]);
+		if (!result[i])
+		{
+			ft_freemap(result);
+			ft_error(game, "Malloc error in map");
+		}
 		i++;
 	}
-	result[i] = '\0';
+	result[i] = NULL;
 	return (result);
 }

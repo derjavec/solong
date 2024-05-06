@@ -39,7 +39,6 @@ static void	check_case(t_solong *game, int x, int y)
 	else if (game->map[y][x] == 'C')
 	{
 		game->map_collectibles++;
-		game->map[y][x] = '0';
 		if (game->map_collectibles == game->map_content.collectible)
 		{
 			game->exit = 1;
@@ -58,15 +57,18 @@ void	move_player(t_solong *game, int x, int y)
 	t_pos	pl;
 
 	pl = game->player;
+	check_case(game, x, y);
 	game->count_moves++;
 	ft_printf("Moves: %d\n", game->count_moves);
-	check_case(game, x, y);
-	game->map[pl.y][pl.x] = '0';
-	print_img(game, game->img.floor, pl.x, pl.y);
-	if (game->map_content.exit_pos.x == pl.x && \
-		game->map_content.exit_pos.y == pl.y)
-		print_img(game, game->img.exit, pl.x, pl.y);
-	print_img(game, game->img.player, x, y);
+	if (game->e == 1)
+	{
+		game->map[pl.y][pl.x] = 'E';
+		game->e = 0;
+	}		
+	else
+		game->map[pl.y][pl.x] = '0';
+	if (game->map[y][x] == 'E')
+		game->e = 1;
 	game->player.x = x;
 	game->player.y = y;
 	game->map[y][x] = 'P';
