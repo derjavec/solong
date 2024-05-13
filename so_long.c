@@ -34,7 +34,6 @@ int	main(int argc, char	*argv[])
 {
 	t_solong	game;
 
-	initialize(&game);
 	if (argc != 2)
 		ft_error(&game, "Wrong amount of arguments\n");
 	map_init(&game, argv[1]);
