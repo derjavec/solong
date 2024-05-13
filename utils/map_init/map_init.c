@@ -61,7 +61,6 @@ void	map_init(t_solong *game, char *filename)
 {
 	if (ft_strnstr(filename, ".ber", ft_strlen(filename)) == NULL)
 		ft_error(game, "Invalid file extention\n");
-	initialize(game);
 	assign_level(filename, game);
 	game->size.y = ft_filelen(filename);
 	if (game->size.y != 9)

@@ -131,7 +131,7 @@ void			ft_freemap(char **map);
 int				ft_filelen(const char *filename);
 int				ft_printf(const char *format, ...);
 void			map_init(t_solong *game, char *filename);
-int			flood_fill(t_solong *game, char **tempmap);
+int				flood_fill(t_solong *game, char **tempmap);
 void			initialize(t_solong *game);
 char			**ft_mapdup(char **map, t_solong *game);
 void			check_borders(char **map, t_solong *game);
